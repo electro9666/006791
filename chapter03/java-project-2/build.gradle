@@ -28,3 +28,30 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
+
+// 모든 sourceSets 확인
+task see1 {
+    sourceSets.each {
+        println(it)
+        it.allSource.each {
+            println(it)
+        }
+    }
+}
+
+// sourceSets의 properties 확인
+task sourceSetProperties1  {
+    sourceSets {
+        main {
+            println "java.srcDirs = ${java.srcDirs}"
+            println "java.files = ${java.files.name}"
+            println "resources.srcDirs = ${resources.srcDirs}"
+            println "resources.files = ${resources.files.name}"
+            println "allJava.files = ${allJava.files.name}"
+            println "allSource.files = ${allSource.files.name}"
+            println "output.classesDir = ${output.classesDir}"
+            println "output.resourcesDir = ${output.resourcesDir}"
+            println "output.files = ${output.files}"
+        }
+    }
+}
