@@ -1,0 +1,24 @@
+apply plugin: 'java'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+sourceSets {
+  integration {
+    compileClasspath = sourceSets.main.output + configurations.testCompile
+    runtimeClasspath = output + compileClasspath + configurations.testCompile
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testCompile "junit:junit:4.11"
+}
+
+
+task integrationTest1(type: Test) {
+  testClassesDir = sourceSets.integration.output.classesDir
+  classpath = sourceSets.integration.runtimeClasspath
+}

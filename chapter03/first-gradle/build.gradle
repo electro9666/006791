@@ -1,5 +1,16 @@
+// // (1) hello 태스크 정의
+// task hello << {
+//   // (2) 태스크에 추가하는 처리
+//   println 'Hello Gradle world!'
+// }
+// The Task.leftShift(Closure) method has been deprecated. This is scheduled to be removed in Gradle 5.0. Please use Task.doLast(Action) instead.
+
 // (1) hello 태스크 정의
-task hello << {
-  // (2) 태스크에 추가하는 처리
-  println 'Hello Gradle world!'
+task hello {
+  doFirst {
+    println 'Hello Gradle world!1'
+  }
+  doLast {
+    println 'Hello Gradle world!2'
+  }
 }
